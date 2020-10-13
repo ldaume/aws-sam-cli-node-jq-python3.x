@@ -1,9 +1,8 @@
 FROM python:3.8-alpine
 
-RUN apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
+RUN apk add --update --no-cache libressl-dev libffi-dev musl-dev postgresql-dev gcc make && \
    pip --no-cache-dir install aws-sam-cli awscli && \
-   apk add --no-cache jq nodejs npm postgresql-libs && \
-   apk --purge del .build-deps
+   apk add --update --no-cache jq nodejs npm postgresql-libs
 
 # drone creates a workspace with root, so user switching does not make sense
 #RUN	adduser -s /bin/bash samcli \
