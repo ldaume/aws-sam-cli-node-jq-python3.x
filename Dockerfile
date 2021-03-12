@@ -1,4 +1,4 @@
-FROM python:3.8-alpine
+FROM python:3-alpine
 
 
 RUN apk add --update --no-cache libressl-dev libffi-dev musl-dev postgresql-dev gcc make bash postgresql-client wget curl && \
@@ -6,6 +6,8 @@ RUN apk add --update --no-cache libressl-dev libffi-dev musl-dev postgresql-dev 
    apk add --update --no-cache jq nodejs npm postgresql-libs
    
 RUN (curl -Ls https://cli.doppler.com/install.sh || wget -qO- https://cli.doppler.com/install.sh) | sh
+
+RUN sam --version
 
 # drone creates a workspace with root, so user switching does not make sense
 #RUN	adduser -s /bin/bash samcli \
