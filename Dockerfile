@@ -1,7 +1,7 @@
 FROM python:3-alpine
 
 
-RUN apk add --update --no-cache libressl-dev libffi-dev musl-dev postgresql-dev gcc make bash postgresql-client wget curl && \
+RUN apk add --update --no-cache libressl-dev libffi-dev musl-dev postgresql-dev gnupg gcc make bash postgresql-client wget curl && \
    pip --no-cache-dir install aws-sam-cli awscli && \
    apk add --update --no-cache jq nodejs npm postgresql-libs
    
